@@ -2,11 +2,12 @@
 //  AppDelegate.swift
 //  LoginMudule
 //
-//  Created by 盘国权 on 2019/5/13.
+//  Created by 盘国权 on 2019/5/14.
 //  Copyright © 2019 pgq. All rights reserved.
 //
 
 import UIKit
+import Login
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = LoginController()
         window?.makeKeyAndVisible()
+        let vc = LoginController()
+        vc.buttonTap = {(button) in
+            UIAlertView(title: "我是一个测试弹窗", message: "测试按钮点击", delegate: nil, cancelButtonTitle: "取消")
+            .show()
+        }
+        window?.rootViewController = vc
         
         return true
     }
